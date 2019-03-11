@@ -7,7 +7,7 @@ module HttpProxy () where
 
 
 
-import           ClassyPrelude
+import           ClassyPrelude             hiding (timeout)
 import qualified Data.ByteString.Char8     as BC
 
 import           Control.Monad.Except

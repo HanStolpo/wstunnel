@@ -3,7 +3,7 @@
 
 module Protocols where
 
-import           ClassyPrelude
+import           ClassyPrelude             hiding (hGetBuffering, hSetBuffering, timeout)
 import           Control.Concurrent        (forkIO)
 import qualified Data.HashMap.Strict       as H
 import           System.Timeout            (timeout)

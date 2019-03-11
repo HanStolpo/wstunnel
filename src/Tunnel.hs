@@ -7,7 +7,7 @@ module Tunnel
     , runServer
     ) where
 
-import           ClassyPrelude
+import           ClassyPrelude                 hiding (timeout)
 import           Data.Maybe                    (fromJust)
 
 import qualified Data.ByteString.Char8         as BC

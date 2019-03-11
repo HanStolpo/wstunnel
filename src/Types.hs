@@ -9,20 +9,22 @@ import           ClassyPrelude
 import           Data.Maybe
 import           System.IO (stdin, stdout)
 import           Data.ByteString (hGetSome, hPutStr)
+import           Data.Word (Word16)
 
 import qualified Data.Streaming.Network        as N
 import qualified Network.Connection            as NC
-import           Network.Socket                (HostName, PortNumber)
+import           Network.Socket                (HostName, PortNumber(..))
 import qualified Network.Socket                as N hiding (recv, recvFrom,
                                                      send, sendTo)
 import qualified Network.Socket.ByteString     as N
 
 import qualified Network.WebSockets.Connection as WS
 
-deriving instance Generic PortNumber
-deriving instance Hashable PortNumber
 deriving instance Generic N.SockAddr
 deriving instance Hashable N.SockAddr
+
+instance Hashable PortNumber where
+  hashWithSalt s a = hashWithSalt s (fromIntegral a :: Word16)
 
 
 data Protocol = UDP | TCP | STDIO | SOCKS5 deriving (Show, Read, Eq)
